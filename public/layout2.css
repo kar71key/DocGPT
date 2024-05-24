@@ -1,0 +1,358 @@
+:root {
+  --color0: #ECEFF4;
+  --color1: #E5E9F0;
+  --color2: #D8DEE9;
+  --color3: #2E3440;
+  --hover-brightness: 0.9;
+}
+
+body.dark-theme {
+  --color0: #2E3440;
+  --color1: #3B4252;
+  --color2: #4C566A;
+  --color3: #ECEFF4;
+  --hover-brightness: 1.1;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+html, body {
+  font-family: 'Manrope', sans-serif;
+  font-weight: 400;
+  margin: 0px;
+  padding: 0px;
+  height: 100%;
+  background-color: var(--color0);
+}
+
+/* This will apply to all selectable text on the page */
+::selection {
+  background: #88C0D0; /* Background color of the selected text */
+  color: #2E3440; /* Color of the selected text */
+}
+
+/* For Mozilla Firefox */
+::-moz-selection {
+  background: #88C0D0;
+  color: #2E3440;
+}
+
+#header {
+  display: flex;
+  height: 60px;
+  justify-content: space-between;
+  align-items: center;
+  margin: 0px;
+  /* padding: 10px; */
+  /* padding-left: auto; */
+  /* padding-right: auto; */
+  box-sizing: border-box;
+  background-color: var(--color1);
+  border-bottom: 1px solid var(--color2);
+}
+
+h1 {
+  color: var(--color3);
+  margin: 10px;
+}
+
+button {
+  height: 40px;
+  width: 40px;
+  margin: 10px;
+  padding: 10px;
+  border: none;
+  border-radius: 20px;
+  cursor: pointer;
+  color: var(--color3);
+  background-color: var(--color2);
+  transition: filter 0.3s ease;
+}
+
+button:hover {
+  filter: brightness(var(--hover-brightness));
+}
+
+#chat-title {
+  text-align: center;
+  font-weight: bold;
+  font-size: larger;
+  line-height: 1.2;
+  margin: 10px;
+  color: var(--color3);
+}
+
+#chat-container {
+  width: 90%;
+  height: calc(100vh - 210px);
+  float: center;
+  margin: auto;
+  /* padding: 25px; */
+  border-radius: 25px;
+  overflow-y: auto;
+  border: 0px solid var(--color2);
+  background-color: var(--color1);
+  border: 1px solid var(--color2);
+}
+
+/* For Webkit (Chrome, Safari) */
+#chat-container::-webkit-scrollbar {
+  width: 10px; /* Width of the scrollbar */
+}
+
+#chat-container::-webkit-scrollbar-track {
+  background: var(--color1); /* Color of the track */
+}
+
+#chat-container::-webkit-scrollbar-thumb {
+  background: #5E81AC; /* Color of the scroll thumb */
+  border-radius: 25px; /* Roundness of the scroll thumb */
+  transition: filter 0.3s ease;
+}
+
+#chat-container::-webkit-scrollbar-thumb:hover {
+  background: #678dbc;
+  /* filter: brightness(var(--hover-brightness)); */ /* This does not work. */
+}
+
+/* For Firefox */
+#chat-container {
+  scrollbar-width: thin; /* Width of the scrollbar */
+  scrollbar-color: #888 #f1f1f1; /* Color of the scrollbar and track */
+}
+
+.chat-message {
+  margin-bottom: 25px;
+  padding: 15px;
+  border-radius: 25px;
+  display: inline-block;
+  max-width: 80%;
+}
+
+.message {
+  position: relative;
+}
+
+.menu {
+  display: none;
+  position: absolute;
+  right: 0;
+  top: 0;
+}
+
+.message:hover .menu {
+  display: block;
+}
+
+.user-message {
+  text-align: right;
+  float: right;
+  clear: both;
+  color: #ECEFF4;
+  background-color: #5E81AC;
+}
+
+.bot-message {
+  text-align: left;
+  float: left;
+  clear: both;
+  color: var(--color3);
+  background-color: var(--color2);
+}
+
+.spinner.bot-message {
+  text-align: left;
+  float: left;
+  clear: both;
+  color: var(--color3);
+  background-color: var(--color2);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 15px;
+  border-radius: 25px;
+  margin-bottom: 25px;
+}
+
+.spinner-animation {
+  border: 4px solid var(--color0); /* Light color for the spinner */
+  border-top: 4px solid var(--color3); /* Dark color for the spinner top */
+  border-radius: 50%;
+  width: 20px;
+  height: 20px;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+.typing-animation {
+  text-align: left;
+  float: left;
+  clear: both;
+  color: var(--color3);
+  background-color: var(--color2);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 15px;
+  border-radius: 25px;
+  margin-bottom: 25px;
+}
+
+.dot {
+  width: 8px;
+  height: 8px;
+  margin: 0 2px;
+  background-color: var(--color3);
+  border-radius: 50%;
+  display: inline-block;
+  animation: jump 1s infinite;
+}
+
+.dot:nth-child(1) { animation-delay: 0s; }
+.dot:nth-child(2) { animation-delay: 0.2s; }
+.dot:nth-child(3) { animation-delay: 0.4s; }
+
+@keyframes jump {
+  0%, 80%, 100% { transform: translateY(0); }
+  40% { transform: translateY(-10px); }
+}
+
+#chat-form {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+  margin-bottom: 10px;
+}
+
+#upload-form {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+  margin-bottom: 10px;
+}
+
+#user-input {
+  box-sizing: border-box;
+  width: 60%;
+  height: 40px;
+  padding: 10px;
+  border: none;
+  border-radius: 20px;
+  font-family: 'Manrope', sans-serif;
+  font-size: 16px;
+  margin-bottom: 10px;
+  color: var(--color3);
+  background-color: var(--color2);
+  transition: filter 0.3s ease;
+}
+
+#user-input:focus {
+  outline: none;
+  filter: brightness(var(--hover-brightness));
+}
+
+#prompt-button {
+  box-sizing: border-box;
+  width: 40px;
+  height: 40px;
+  margin-left: 10px;
+  margin-bottom: 10px;
+  margin-top: 0px;
+  padding: 10px;
+  border: none;
+  border-radius: 20px;
+  color: #ECEFF4;
+  background-color: #5E81AC;
+  transition: filter 0.3s ease;
+}
+
+#prompt-button:hover {
+  filter: brightness(var(--hover-brightness));
+}
+
+#clear-history {
+  box-sizing: border-box;
+  width: 40px;
+  height: 40px;
+  margin-right: 10px;
+  margin-bottom: 10px;
+  margin-top: 0px;
+  padding: 10px;
+  border: none;
+  border-radius: 20px;
+  color: #ECEFF4;
+  background-color: #BF616A;
+  transition: filter 0.3s ease;
+}
+
+#clear-history:hover {
+  filter: brightness(var(--hover-brightness));
+}
+
+* {
+  transition: background-color 0.5s, color 0.5s;
+}
+
+/* html {
+  visibility: visible;
+  opacity: 1;
+} */
+
+input[type="file"] {
+  display: none;
+}
+
+.custom-file-upload {
+  border: 1px solid #ccc;
+  display: inline-block;
+  /* padding: 6px 12px; */
+  cursor: pointer;
+  height: 20px;
+  width: auto;
+  /* margin-bottom: 15px; */
+  padding: 10px;
+  border: none;
+  border-radius: 20px;
+  cursor: pointer;
+  color: var(--color3);
+  background-color: var(--color2);
+  margin-left: 10px;
+  margin-bottom: 10px;
+  margin-top: 0px;
+  border: none;
+  border-radius: 20px;
+  transition: filter 0.3s ease;
+}
+
+#upload-button {
+  box-sizing: border-box;
+  width: 40px;
+  height: 40px;
+  margin-left: 10px;
+  margin-bottom: 10px;
+  margin-top: 0px;
+  padding: 10px;
+  border: none;
+  border-radius: 20px;
+  transition: filter 0.3s ease;
+  background-color: #A3BE8C;
+}
+
+.custom-file-upload:hover {
+  filter: brightness(var(--hover-brightness));
+}
+
+#no-pdf-msg {
+  text-align: center;
+  font-weight: bold;
+  font-size: larger;
+  line-height: 1.2;
+  margin: 10px;
+  color: var(--color3);
+}
